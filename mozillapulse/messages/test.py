@@ -8,6 +8,7 @@ from base import GenericMessage
 # Simple test message
 # ------------------------------------------------------------------------------
 
+
 class TestMessage(GenericMessage):
 
     def __init__(self):

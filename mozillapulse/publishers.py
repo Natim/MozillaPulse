@@ -8,12 +8,13 @@ from kombu import Connection, Exchange, Producer
 from pytz import timezone
 
 from config import PulseConfiguration
-from utils import *
+from utils import time_to_string
 
 
 # Exceptions we can raise
 class InvalidExchange(Exception):
     pass
+
 
 class MalformedMessage(Exception):
     pass

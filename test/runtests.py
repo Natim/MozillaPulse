@@ -40,9 +40,11 @@ class ConsumerSubprocess(multiprocessing.Process):
 
     def run(self):
         queue = self.queue
+
         def cb(body, message):
             queue.put(body)
             message.ack()
+
         consumer = self.consumer_class(durable=self.durable, **self.config)
         consumer.configure(topic=['#'] * len(consumer.exchange), callback=cb)
         consumer.listen()
@@ -318,11 +320,11 @@ class ModifiedConsumer(consumers.GenericConsumer):
 
     def _create_queue(self, exchange=None, routing_key=''):
         return consumers.Queue(name='queue/pulse/test',
-            exchange=exchange,
-            routing_key=routing_key,
-            durable=self.durable,
-            exclusive=False,
-            auto_delete=not self.durable)
+                               exchange=exchange,
+                               routing_key=routing_key,
+                               durable=self.durable,
+                               exclusive=False,
+                               auto_delete=not self.durable)
 
 
 class TestPermission(unittest.TestCase):

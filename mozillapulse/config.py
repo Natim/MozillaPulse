@@ -5,7 +5,8 @@
 DEFAULT_PORT = 5672
 DEFAULT_SSL_PORT = 5671
 
-class PulseConfiguration:
+
+class PulseConfiguration(object):
 
     # Default values for Mozilla pulse
     defaults = {
