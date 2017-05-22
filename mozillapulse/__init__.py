@@ -8,5 +8,6 @@ __all__ = ['config', 'utils', 'messages', 'rfc3339', 'consumers', 'publishers']
 
 
 # Printing throws an error if we are printing using ascii
-reload(sys)
-sys.setdefaultencoding('utf-8')
+if sys.version_info < (3,):
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
