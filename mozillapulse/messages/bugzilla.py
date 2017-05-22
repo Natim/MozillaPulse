@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from base import GenericMessage, MalformedMessage
-from mozillapulse.utils import email_to_routing_key
+from .base import GenericMessage, MalformedMessage
+from ..utils import email_to_routing_key
 
 
 # ------------------------------------------------------------------------------

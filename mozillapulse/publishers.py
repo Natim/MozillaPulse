@@ -7,8 +7,8 @@ from datetime import datetime
 from kombu import Connection, Exchange, Producer
 from pytz import timezone
 
-from config import PulseConfiguration
-from utils import time_to_string
+from .config import PulseConfiguration
+from .utils import time_to_string
 
 
 # Exceptions we can raise

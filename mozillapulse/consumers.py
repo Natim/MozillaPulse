@@ -9,7 +9,7 @@ from socket import timeout as socket_timeout
 from amqp import ChannelError
 from kombu import Connection, Exchange, Queue
 
-from mozillapulse.config import PulseConfiguration
+from .config import PulseConfiguration
 
 
 class InvalidTopic(Exception):

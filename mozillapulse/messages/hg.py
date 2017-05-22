@@ -2,8 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from base import GenericMessage
-from mozillapulse.utils import repo_parts
+from .base import GenericMessage
+from ..utils import repo_parts
 
 
 # ------------------------------------------------------------------------------

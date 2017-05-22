@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import re
-from rfc3339 import rfc3339
+from .rfc3339 import rfc3339
 
 
 # Takes a string and attempts to extract bug ids in it
