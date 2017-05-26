@@ -1,7 +1,6 @@
 # Any copyright is dedicated to the Public Domain.
 # http://creativecommons.org/publicdomain/zero/1.0/
 
-import Queue
 import multiprocessing
 import sys
 import time
@@ -96,13 +95,10 @@ class PulseTestMixin(object):
     def _get_verify_msg(self, msg):
         try:
             received_data = self.proc.queue.get(timeout=5)
-        except Queue.Empty:
+        except multiprocessing.Queue.Empty:
             self.fail('did not receive message from consumer process')
         self.assertEqual(msg.routing_key, received_data['_meta']['routing_key'])
-        received_payload = {}
-        for k, v in received_data['payload'].iteritems():
-            received_payload[k.encode('ascii')] = v.encode('ascii')
-        self.assertEqual(msg.data, received_payload)
+        self.assertEqual(msg.data, received_data['payload'])
 
     def test_nondurable(self):
         # Publish one message to ensure the exchange exists.  Since there is
