@@ -14,18 +14,13 @@ before_install:
   - sudo rabbitmqctl set_permissions -p / build "^(queue/build/.*|exchange/build/.*)" "^(queue/build/.*|exchange/build/.*)" "^(queue/build/.*|exchange/.*)"
   - sudo rabbitmqctl add_user taskcluster taskcluster
   - sudo rabbitmqctl set_permissions -p / taskcluster "^(queue/taskcluster/.*|exchange/taskcluster.*)" "^(queue/taskcluster/.*|exchange/taskcluster.*)" "^(queue/taskcluster/.*|exchange/.*)"
-env:
-  - TOX_ENV=py27
-  - TOX_ENV=flake8
 install:
-  - pip install tox
+  - pip install -e .
+  - pip install flake8
 script:
-  - tox -e $TOX_ENV
+  - flake8 flake8 mozillapulse test
+  - python test/runtests.py --host localhost
 matrix:
   include:
     - python: 3.5
-      env: TOX_ENV=py35
-    - python: 3.5
-      env: TOX_ENV=flake8
     - python: 3.6
-      env: TOX_ENV=py36
