@@ -7,7 +7,8 @@ from . import config, utils, messages, rfc3339, consumers, publishers
 __all__ = ['config', 'utils', 'messages', 'rfc3339', 'consumers', 'publishers']
 
 
-# Printing throws an error if we are printing using ascii
+# Printing throws an error if we are printing using ascii in Python 2
 if sys.version_info < (3,):
+    from imp import reload
     reload(sys)
     sys.setdefaultencoding('utf-8')
