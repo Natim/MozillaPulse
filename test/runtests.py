@@ -1,6 +1,10 @@
 # Any copyright is dedicated to the Public Domain.
 # http://creativecommons.org/publicdomain/zero/1.0/
 
+try:
+    import queue
+except ImportError:
+    import Queue as queue
 import multiprocessing
 import sys
 import time
@@ -95,7 +99,7 @@ class PulseTestMixin(object):
     def _get_verify_msg(self, msg):
         try:
             received_data = self.proc.queue.get(timeout=5)
-        except multiprocessing.Queue.Empty:
+        except queue.Empty:
             self.fail('did not receive message from consumer process')
         self.assertEqual(msg.routing_key, received_data['_meta']['routing_key'])
         self.assertEqual(msg.data, received_data['payload'])
